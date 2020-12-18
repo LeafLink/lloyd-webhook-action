@@ -3,4 +3,4 @@
 set -ev
 
 echo $@
-env
+env | sort
