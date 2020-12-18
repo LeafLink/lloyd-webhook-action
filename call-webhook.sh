@@ -1,5 +1,6 @@
 #!/bin/bash
 
-set -e
+set -ev
 
 echo $@
+echo env

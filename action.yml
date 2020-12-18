@@ -22,5 +22,3 @@ runs:
   steps:
     - run: ${{ github.action_path }}/call-webhook.sh 
       shell: bash
-      args:
-        - ${{ inputs.webhook_url }}
