@@ -20,5 +20,5 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - run: ${{ github.action_path }}/call-webhook.sh 
+    - run: ${{ github.action_path }}/call-webhook.sh ${{ inputs.webhook_url }}
       shell: bash
