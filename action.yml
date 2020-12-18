@@ -1,0 +1,26 @@
+name: LLoyd Webhook Caller
+description: Used by LeafLink repositories to call LLoyd webhooks when events occur within a GitHub Action workflow
+inputs:
+  webhook_url:
+    description: Webhook URL to call
+    required: true
+  webhook_token:
+    description: Authoentication bearer token for the webhook
+    required: true
+  event:
+    description: The type of event that has occurred
+    required: true
+  build_url:
+    description: The URL of the GitHub Action run
+    required: true
+  repo:
+    description: The name of the GitHub repository the Action is being run from
+  tag:
+    description: The git tag corresponding to the Action run
+runs:
+  using: "composite"
+  steps:
+    - run: ${{ github.action_path }}/call-webhook.sh 
+      shell: bash
+      args:
+        - ${{ inputs.webhook_url }}
