@@ -3,4 +3,4 @@
 set -ev
 
 echo $@
-echo env
+env
