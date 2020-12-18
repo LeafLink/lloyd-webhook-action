@@ -5,7 +5,7 @@ inputs:
     description: Webhook URL to call
     required: true
   webhook_token:
-    description: Authoentication bearer token for the webhook
+    description: Authentication bearer token for the webhook
     required: true
   event:
     description: The type of event that has occurred
@@ -20,5 +20,12 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - run: ${{ github.action_path }}/call-webhook.sh ${{ inputs.webhook_url }}
+    - run: |
+        ${{ github.action_path }}/call-webhook.sh \
+          --webhook-url ${{ inputs.webhook_url }} \
+          --webhook-token ${{ inputs.webhook_token }} \
+          --event ${{ inputs.event }} \
+          --build-url ${{ inputs.build_url }} \
+          --repo ${{ inputs.repo }} \
+          --tag ${{ inputs.tag }}
       shell: bash
