@@ -3,7 +3,7 @@
 set -e
 
 # Setup input variables
-BUILD_URL="https://github.com/${GITHUB_REPOSITORY}/runs/${GITHUB_RUN_ID}"
+BUILD_URL="https://github.com/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
 EVENT="${INPUT_EVENT:-}"
 REPO="${INPUT_REPO:-$(echo $GITHUB_REPOSITORY | awk -F '/' '{print $2}')}"
 TAG="${INPUT_TAG:-$RELEASE_TAG}"
