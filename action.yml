@@ -12,8 +12,10 @@ inputs:
     required: true
   repo:
     description: The name of the GitHub repository the Action is being run from
+    default: invalid
   tag:
     description: The git tag corresponding to the Action run
+    default: invalid
 runs:
   using: "composite"
   steps:

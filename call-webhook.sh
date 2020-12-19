@@ -10,8 +10,13 @@ TAG="${INPUT_TAG:-$RELEASE_TAG}"
 WEBHOOK_URL="${INPUT_WEBHOOK_URL:-}"
 WEBHOOK_TOKEN="${INPUT_WEBHOOK_TOKEN:-}"
 
+INVALID="invalid" # Special input flag denoted a default value from the action caller
+
 # Main functionality of the script
 main() {
+    # Set default values if needed
+    set_defaults
+
     echo "Calling LLoyd webhook..."
     echo "    DEBUG: Webhook URL - ${WEBHOOK_URL}"
     echo "    DEBUG: Webhook Token - ${WEBHOOK_TOKEN:0:4}******"
@@ -24,6 +29,19 @@ main() {
         --header "Authorization: Bearer ${WEBHOOK_TOKEN}" \
         --header "Content-Type: application/json" \
         --data-raw "{\"event\": \"${EVENT}\", \"build_url\":\"${BUILD_URL}\", \"repo\": \"${REPO}\", \"tag\": \"${TAG}\"}"
+}
+
+# Function used to set default values for variables if needed
+set_defaults() {
+    # Attempt to determine the repo if not passed in
+    if [ "${REPO}" == "${INVALID}" ]; then
+        REPO="$(echo $GITHUB_REPOSITORY | awk -F '/' '{print $2}')"
+    fi
+
+    # Attempt to determine the release tag if not passed in    
+    if [ "${TAG}" == "${INVALID}" ]; then
+        TAG="${RELEASE_TAG}"
+    fi
 }
 
 # Function that verifies required input was passed in
