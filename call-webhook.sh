@@ -36,7 +36,6 @@ Usage: $(basename $0) <options>
 Script used to call LLoyd webhooks
 
 Options:
-  --build-url                   The URL of the GitHub Action run
   --event (required)            The type of event that has occurred
   --repo                        The name of the GitHub repository the Action is being run from
   --tag                         The git tag corresponding to the Action run
@@ -55,7 +54,6 @@ while getopts "h-:" opt; do
     h) usage && exit 0;;
     -)
       case "${OPTARG}" in
-        build-url) BUILD_URL="${!OPTIND}"; OPTIND=$(( $OPTIND + 1 ));;
         event) EVENT="${!OPTIND}"; OPTIND=$(( $OPTIND + 1 ));;
         repo) REPO="${!OPTIND}"; OPTIND=$(( $OPTIND + 1 ));;
         tag) TAG="${!OPTIND}"; OPTIND=$(( $OPTIND + 1 ));;

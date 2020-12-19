@@ -10,8 +10,6 @@ inputs:
   event:
     description: The type of event that has occurred
     required: true
-  build_url:
-    description: The URL of the GitHub Action run
   repo:
     description: The name of the GitHub repository the Action is being run from
   tag:
@@ -24,7 +22,6 @@ runs:
           --webhook-url ${{ inputs.webhook_url }} \
           --webhook-token ${{ inputs.webhook_token }} \
           --event ${{ inputs.event }} \
-          --build-url ${{ inputs.build_url }} \
           --repo ${{ inputs.repo }} \
           --tag ${{ inputs.tag }}
       shell: bash
