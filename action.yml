@@ -12,7 +12,6 @@ inputs:
     required: true
   build_url:
     description: The URL of the GitHub Action run
-    required: true
   repo:
     description: The name of the GitHub repository the Action is being run from
   tag:

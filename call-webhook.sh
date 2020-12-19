@@ -3,12 +3,12 @@
 set -e
 
 # Setup input variables
-WEBHOOK_URL="${INPUT_WEBHOOK_URL:-}"
-WEBHOOK_TOKEN="${INPUT_WEBHOOK_TOKEN:-}"
+BUILD_URL="${INPUT_BUILD_URL:-https://github.com/$GITHUB_REPOSITORY/runs/$GITHUB_RUN_ID}"
 EVENT="${INPUT_EVENT:-}"
-BUILD_URL="${INPUT_BUILD_URL:-}"
 REPO="${INPUT_REPO:-$(echo $GITHUB_REPOSITORY | awk -F '/' '{print $2}')}"
 TAG="${INPUT_TAG:-$RELEASE_TAG}"
+WEBHOOK_URL="${INPUT_WEBHOOK_URL:-}"
+WEBHOOK_TOKEN="${INPUT_WEBHOOK_TOKEN:-}"
 
 # Main functionality of the script
 main() {
@@ -24,7 +24,7 @@ main() {
 # Function that verifies required input was passed in
 verify_input() {
   # Verify required inputs are not empty
-  [ ! -z "$WEBHOOK_URL" ] && [ ! -z "$WEBHOOK_TOKEN" ] && [ ! -z "$EVENT" ] && [ ! -z "$BUILD_URL" ]
+  [ ! -z "$WEBHOOK_URL" ] && [ ! -z "$WEBHOOK_TOKEN" ] && [ ! -z "$EVENT" ]
 }
 
 # Function that outputs usage information
@@ -36,7 +36,7 @@ Usage: $(basename $0) <options>
 Script used to call LLoyd webhooks
 
 Options:
-  --build-url (required)        The URL of the GitHub Action run
+  --build-url                   The URL of the GitHub Action run
   --event (required)            The type of event that has occurred
   --repo                        The name of the GitHub repository the Action is being run from
   --tag                         The git tag corresponding to the Action run
