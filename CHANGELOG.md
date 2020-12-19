@@ -1,6 +1,12 @@
 # Changelog
 ---
 
+## [0.0.8](https://github.com/LeafLink/lloyd-webhook-action/releases/tag/0.0.8) ([compare](https://github.com/LeafLink/lloyd-webhook-action/compare/0.0.7...0.0.8)) - 2020-12-19
+
+### Misc
+- Updated files for release 0.0.8 ([768375f](https://github.com/LeafLink/lloyd-webhook-action/commit/768375fb4750a65827eb0bef3a5bf5eeea7a1b5e)).
+
+
 ## [0.0.7](https://github.com/LeafLink/lloyd-webhook-action/releases/tag/0.0.7) ([compare](https://github.com/LeafLink/lloyd-webhook-action/compare/0.0.6...0.0.7)) - 2020-12-19
 
 ### Misc

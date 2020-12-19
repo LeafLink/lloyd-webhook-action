@@ -19,6 +19,11 @@ main() {
     echo "    DEBUG: Build URL - ${BUILD_URL}"
     echo "    DEBUG: Repo - ${REPO}"
     echo "    DEBUG: Tag - ${TAG}"
+
+    curl --request POST "${WEBHOOK_URL}" \
+        --header "Authorization: Bearer ${WEBHOOK_TOKEN}" \
+        --header "Content-Type: application/json" \
+        --data-raw "{\"event\": \"${EVENT}\", \"build_url\":\"${BUILD_URL}\", \"repo\": \"${REPO}\", \"tag\": \"${TAG}\"}"
 }
 
 # Function that verifies required input was passed in
